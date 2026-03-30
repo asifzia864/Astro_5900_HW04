@@ -91,38 +91,38 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-# # Animation
-# fig, ax = plt.subplots(figsize=(6,6))
-# ax.set_aspect('equal')
-# ax.set_xlim(-2.0, 2.0)
-# ax.set_ylim(-2.0, 2.0)
-# ax.plot(0, 0, 'yo', markersize=12, label="Sun")
-# point_e, = ax.plot([], [], 'ro', markersize=7, label="Euler")
-# line_e, = ax.plot([], [], 'r-', alpha=1, linewidth=1)
-# point_lf, = ax.plot([], [], 'bo', markersize=7, label="Leapfrog")
-# line_lf, = ax.plot([], [], 'b-', alpha=1, linewidth=1)
+# Animation
+fig, ax = plt.subplots(figsize=(6,6))
+ax.set_aspect('equal')
+ax.set_xlim(-2.0, 2.0)
+ax.set_ylim(-2.0, 2.0)
+ax.plot(0, 0, 'yo', markersize=12, label="Sun")
+point_e, = ax.plot([], [], 'ro', markersize=7, label="Euler")
+line_e, = ax.plot([], [], 'r-', alpha=1, linewidth=1)
+point_lf, = ax.plot([], [], 'bo', markersize=7, label="Leapfrog")
+line_lf, = ax.plot([], [], 'b-', alpha=1, linewidth=1)
 
-# # Initialization Function
-# def init():
-#     point_e.set_data([], [])
-#     line_e.set_data([], [])
-#     point_lf.set_data([], [])
-#     line_lf.set_data([], [])
-#     return point_e, line_e, point_lf, line_lf
+# Initialization Function
+def init():
+    point_e.set_data([], [])
+    line_e.set_data([], [])
+    point_lf.set_data([], [])
+    line_lf.set_data([], [])
+    return point_e, line_e, point_lf, line_lf
 
-# # Update Function
-# def update(i):
-#     point_e.set_data([x_e[i]], [y_e[i]])
-#     line_e.set_data(x_e[:i], y_e[:i])
-#     point_lf.set_data([x_lf[i]], [y_lf[i]])
-#     line_lf.set_data(x_lf[:i], y_lf[:i])
+# Update Function
+def update(i):
+    point_e.set_data([x_e[i]], [y_e[i]])
+    line_e.set_data(x_e[:i], y_e[:i])
+    point_lf.set_data([x_lf[i]], [y_lf[i]])
+    line_lf.set_data(x_lf[:i], y_lf[:i])
 
-#     return point_e, line_e, point_lf, line_lf
+    return point_e, line_e, point_lf, line_lf
 
-# # range(0, len(time_arr), 10) is used to skip frames 
-# ani = FuncAnimation(fig, update, frames=range(0, len(x_e), 5), 
-#                     init_func=init, blit=True, interval=20)
+# range(0, len(time_arr), 10) is used to skip frames 
+ani = FuncAnimation(fig, update, frames=range(0, len(x_e), 5), 
+                    init_func=init, blit=True, interval=20)
 
-# plt.legend(loc="upper right")
-# plt.grid(True)
-# plt.show()
+plt.legend(loc="upper right")
+plt.grid(True)
+plt.show()
